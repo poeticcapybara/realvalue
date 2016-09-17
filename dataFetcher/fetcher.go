@@ -6,6 +6,7 @@ import (
     "io/ioutil"
     "os"
     "encoding/json"
+    "strconv"
 )
 
 type searchItem struct{
@@ -35,6 +36,7 @@ type searchResponse struct{
 
 func main() {
 
+    //Search for properties
     url := "https://api.tamedia.cloud/homegate/v1/rs/real-estates?lan=de&cht=rentall&cou=CH&nrs=1000"
 
     req, _ := http.NewRequest("GET", url, nil)
@@ -52,14 +54,39 @@ func main() {
         os.Exit(1)
     }
 
+    //Parse the JSON response
     var searchResp searchResponse;
-
     decodeErr := json.Unmarshal(body, &searchResp);
     if (decodeErr!=nil){
         fmt.Println("Error decoding JSON response with error: ", decodeErr.Error());
         os.Exit(1)
     }
     
+    //Output general summary data from the response
     fmt.Println("ResultsCount: ",searchResp.ResultCount)
+    fmt.Println("Start: ",searchResp.Start)
+    fmt.Println("Page: ",searchResp.Page)
+    fmt.Println("PageCount: ",searchResp.PageCount)
     fmt.Println("ItemsPerPage: ",searchResp.ItemsPerPage)
+    fmt.Println("HasNextPage: ",searchResp.HasNextPage)
+    fmt.Println("HasPreviousPage: ",searchResp.HasPreviousPage)
+
+    //Extract some features and write them to a file
+    var fileName = "data.csv";
+    fileHandle, openError := os.OpenFile(fileName, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0777)
+    defer fileHandle.Close()
+    if openError!=nil {
+        fmt.Println("Error opening file: ", openError.Error())
+        os.Exit(1)
+    }
+
+    for i:=0;i<len(searchResp.Items);i++{
+        item := searchResp.Items[i];
+        fileHandle.WriteString(strconv.FormatInt(item.AdvertismentId,10));
+        fileHandle.WriteString(",'");
+        fileHandle.WriteString(item.GeoLocation);
+        fileHandle.WriteString("',");
+        fileHandle.WriteString(strconv.FormatInt(item.SurfaceLiving,10));
+        fileHandle.WriteString("\n");
+    }
 }
