@@ -1,5 +1,7 @@
 package services;
 
+import helpers.AdIdExtractor;
+
 import javax.inject.Inject;
 
 import models.AdDetail;
