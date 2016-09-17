@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>RealPrice</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">RealValue</a>
+			</div>
+		</div>
+	</nav>
+	<div class="bkg"></div>
+	<div class="container">
+		<form class="row form-inline advertismentForm">
+			<div class="form-group">
+				<h2>Show us your dream house<br>We will show you if the price is right!</h2>
+			</div>
+			<div class="form-group">
+				<label for="advertismentId">Advertisment Id:</label>
+				<input type="number" class="form-control" id="advertismentId" placeholder="105912496" required>
+			</div>
+			<button type="submit" class="btn btn-default">Search</button>
+		</form>
+		<div class="row homeList">
+			<div class="col-md-5 no-padding dataCont">
+				<div class="row title"></div>
+				<div class="row labels"></div>
+				<div class="row details"></div>
+				<div class="row equipment"></div>
+				<div class="row btn_price"></div>
+			</div>
+			<div class="col-md-7 no-padding imgCont">
+			</div>
+		</div>
+	</div>
+	<div class="alert alert-danger" role="alert"></div>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
