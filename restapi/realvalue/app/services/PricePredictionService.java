@@ -1,6 +1,7 @@
 package services;
 
 import helpers.AdIdExtractor;
+import helpers.PriceComputer;
 
 import javax.inject.Inject;
 
@@ -22,7 +23,8 @@ public class PricePredictionService {
 		if (adDetail==null) return null;
 		PriceResponse pr = new PriceResponse();
 		pr.setActualPrice(adDetail.getSellingPrice());
-		pr.setFairPrice(adDetail.getSellingPrice());
+		//Compute fair price
+		pr.setFairPrice(PriceComputer.computePrice(adDetail.getSurfaceLiving(), adDetail.getNumberRooms()));
 		return pr;
 	}
 }

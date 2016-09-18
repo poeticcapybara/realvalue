@@ -27,11 +27,13 @@ public class RealEstateDetailFetcher {
 	}
 	
 	public AdDetail fetchDetail(long adID){
+		if (adID==-1) return null;
 		//Add query parameter key value pairs
 		List<Map.Entry<String,String>> l = new ArrayList<Map.Entry<String,String>>();
 		l.add(new AbstractMap.SimpleEntry<String,String>("lan","de"));
 		//Provide entpoint url and query parameter list
 		JsonNode node = apiFetcher.fetch("/rs/real-estates/"+Long.toString(adID), l);
+		if (node==null) return null;
 		try {
 			ObjectMapper o = new ObjectMapper();
 			AdDetail adDetail = o.treeToValue(node, AdDetail.class);

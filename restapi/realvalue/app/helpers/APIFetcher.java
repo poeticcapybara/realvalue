@@ -2,16 +2,13 @@ package helpers;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletionException;
 import java.util.concurrent.CompletionStage;
-import java.util.concurrent.ExecutionException;
 
 import javax.inject.Inject;
 
-import models.AdDetail;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import play.libs.ws.WSClient;
 import play.libs.ws.WSResponse;
@@ -43,12 +40,12 @@ public class APIFetcher {
 				.setHeader("apikey", "6d293d15ec404a00acd74d8a5be27183")
 				.get().thenApply(WSResponse::asJson);
 		try {
-			JsonNode node = complStage.toCompletableFuture().get();
+			JsonNode node = complStage.toCompletableFuture().join();
 			return node;
-		} catch (InterruptedException e) {
+		} catch (CompletionException e) {
 			e.printStackTrace();
 			return null;
-		} catch (ExecutionException e) {
+		} catch (CancellationException e) {
 			e.printStackTrace();
 			return null;
 		}

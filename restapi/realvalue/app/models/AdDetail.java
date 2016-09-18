@@ -5,24 +5,24 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AdDetail {
 
-	private long advertismentId;
+	private Long advertismentId;
 	private String title;
 	private String propertyStreet;
 	private String propertyZip;
 	private String propertyCityname;
 	private String propertyCountry;
 	private String currency;
-	private long sellingPrice;
+	private Double sellingPrice;
 	private String objectCategory;
-	private long surfaceLiving;
+	private Long surfaceLiving;
 	private String geoLocation;
-	private double numberRooms;
+	private Double numberRooms;
 	
 	public AdDetail(){
 		//
 	}
 
-	public long getAdvertismentId() {
+	public Long getAdvertismentId() {
 		return advertismentId;
 	}
 
@@ -50,7 +50,7 @@ public class AdDetail {
 		return currency;
 	}
 
-	public long getSellingPrice() {
+	public Double getSellingPrice() {
 		return sellingPrice;
 	}
 
@@ -58,7 +58,7 @@ public class AdDetail {
 		return objectCategory;
 	}
 
-	public long getSurfaceLiving() {
+	public Long getSurfaceLiving() {
 		return surfaceLiving;
 	}
 
@@ -66,7 +66,7 @@ public class AdDetail {
 		return geoLocation;
 	}
 
-	public void setAdvertismentId(long advertismentId) {
+	public void setAdvertismentId(Long advertismentId) {
 		this.advertismentId = advertismentId;
 	}
 
@@ -94,7 +94,7 @@ public class AdDetail {
 		this.currency = currency;
 	}
 
-	public void setSellingPrice(long sellingPrice) {
+	public void setSellingPrice(Double sellingPrice) {
 		this.sellingPrice = sellingPrice;
 	}
 
@@ -102,7 +102,7 @@ public class AdDetail {
 		this.objectCategory = objectCategory;
 	}
 
-	public void setSurfaceLiving(long surfaceLiving) {
+	public void setSurfaceLiving(Long surfaceLiving) {
 		this.surfaceLiving = surfaceLiving;
 	}
 
@@ -114,7 +114,7 @@ public class AdDetail {
 		return numberRooms;
 	}
 
-	public void setNumberRooms(double numberRooms) {
+	public void setNumberRooms(Double numberRooms) {
 		this.numberRooms = numberRooms;
 	}
 }
