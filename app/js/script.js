@@ -26,13 +26,13 @@ $(function(){
 
 					location = {lat: parseFloat(location[1]), lng:parseFloat(location[0])};
 
-					if (item.price < 10000000 ){
+					if (item.price < 1000000 ){
 						bargainInt = 1;
 					}
-					else if (item.price < 25000000 ){
+					else if (item.price < 2500000 ){
 						bargainInt = 0;
 					}
-					else if (item.price >= 25000000 ){
+					else if (item.price >= 2500000 ){
 						bargainInt = -1;
 					}
 
@@ -42,6 +42,8 @@ $(function(){
 						centerMap(location);
 					}
 				});
+
+				$('#legend').show();
 			}
 		}).fail(function(xhr, status, error) {
 			var respError = $.parseJSON(xhr.responseText);
@@ -74,6 +76,34 @@ function initMap(){
 			position: google.maps.ControlPosition.LEFT_BOTTOM
 		}
 	});
+
+	var iconBase = 'http://maps.google.com/mapfiles/ms/icons/';
+    var icons = {
+      parking: {
+        name: 'Cheap',
+        icon: iconBase + 'green-dot.png'
+      },
+      library: {
+        name: 'Fair',
+        icon: iconBase + 'blue-dot.png'
+      },
+      info: {
+        name: 'Expensive',
+        icon: iconBase + 'red-dot.png'
+      }
+    };
+
+    var legend = document.getElementById('legend');
+        for (var key in icons) {
+          var type = icons[key];
+          var name = type.name;
+          var icon = type.icon;
+          var div = document.createElement('div');
+          div.innerHTML = '<img src="' + icon + '"> ' + name;
+          legend.appendChild(div);
+        }
+
+        map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(legend);
 }
 
 // Adds a marker to the map and push to the array.
@@ -90,10 +120,13 @@ function addMarker(location, advertisementId, bargainInt) {
 		window.open(marker.url,'_blank');
     });
 
-	if (bargainInt == 0){
+	if (bargainInt == -1){
+		marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
+	}
+	else if (bargainInt == 0){
 		marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
 	}
-	else if (bargainInt == -1){
+	else if (bargainInt == 1){
 		marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
 	}
 	markers.push(marker);
