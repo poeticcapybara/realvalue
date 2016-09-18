@@ -1,20 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>RealPrice</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
-</head>
-<body>
-	<nav class="navbar navbar-inverse">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">RealValue</a>
+	<head>
+		<meta charset="UTF-8">
+		<title>RealValue</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+	</head>
+	<body>
+		<div id="map"></div>
+		<a class="brand" href="http://www.homegate.ch" target="_blank"><img src="http://www.homegate.ch/ver-20160830151814/assets/img/homegate-logo-small.png"></a>
+		<form class="row form-inline locationForm">
+			<div class="form-group">
+				<h3 for="location">Fair price? Give me a location</h3>
+				<input type="text" class="form-control" id="location" placeholder="Zurich" required>
 			</div>
-		</div>
-	</nav>
-	<div class="bkg"></div>
+			<button type="submit" class="btn btn-default">Homegate It!</button>
+		</form>
+
+		<div id="errorModal" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Warning</h4>
+					</div>
+					<div class="modal-body">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+		<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+		<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApxmQwxYAtyZnjcub_bstTRUdEZfjL1_0&libraries=visualization&callback=initMap">
+		</script>
+	</body>
+</html>
+
+<!--
+
+<body>
 	<div class="container">
 		<form class="row form-inline advertismentForm">
 			<div class="form-group">
@@ -42,5 +72,8 @@
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/script.js"></script>
+	<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApxmQwxYAtyZnjcub_bstTRUdEZfjL1_0&libraries=visualization&callback=initMap">
+	</script>
 </body>
-</html>
+</html> -->

@@ -1,69 +1,39 @@
-body{
-	background: #F4F8FA;
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
 }
 
-.bkg{
-	height: 100vh;
-	background-image:url('https://www.locationscout.net/public/images/2015-02/gasthaus-aescher-wildkirchli-switzerland_l.jpeg');
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
+#map {
+	height: 100%;
 }
 
-.label{
-	padding: .3em 1em;
-	font-size: 11px;
-	font-weight: normal;
-}
-
-.label-default{
-	background-color: #064974;
-}
-
-.label-info{
-	background-color: #FEC949;
-}
-
-.navbar-inverse{
+.brand img{
 	position: absolute;
-	background-color: transparent;
-	border-color: transparent;
+	top: 0;
+	right: 0;
+	left: 0;
+	margin: 0 auto;
 }
 
-.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
-	background-color: #C83232;
-}
-
-.navbar-inverse .navbar-brand{
-	display: block;
-	width: 220px; height: 45px;
-	background: url(http://www.homegate.ch/ver-20160830151814/assets/img/homegate-logo-small.png) no-repeat;
-	color: transparent;
-}
-
-.navbar-inverse .navbar-brand:hover{
-	color: transparent;	
-}
-
-.advertismentForm{
+.locationForm{
 	position: absolute;
-	top: 0; right: 0; bottom: 0; left: 0;
+	right: 0; bottom: 0; left: 0;
 	background: rgba(255, 255, 255, 0.75);
-	max-width: 750px;
-	height: 250px;
+	max-width: 350px;
 	margin: auto;
 	text-align: center;
 }
 
-.advertismentForm h2{
-	margin-bottom: 20px;
+.locationForm h3{
+	margin: 0;
 }
 
-.advertismentForm .form-group, .advertismentForm .btn-default{
+.locationForm .form-group, .locationForm .btn-default{
 	margin: 15px 0;
+	display: inline;
 }
-
+/*
 .alert-danger{
 	display: none;
 	position: absolute;
@@ -149,4 +119,4 @@ body{
 	.advertismentForm .btn-default{
 		margin: 0;
 	}
-}
+}*/
