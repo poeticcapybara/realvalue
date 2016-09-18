@@ -14,8 +14,6 @@ $(function(){
 			apikey: 'aac2c78bdfd7487d998f7ae679b55c9b'
 		}).done(function(data) {
 
-			console.log(data);
-
 			if(data.resultCount == 0){
 				$modalBody.html('<p>No data available, try another city.</p>');
 				$modal.modal('show');
@@ -23,7 +21,7 @@ $(function(){
 			else{
 				data.items.forEach(function(item, i){
 					var location = item.geoLocation.split(","),
-						advertisementId = data.advertisementId,
+						advertisementId = item.advertisementId,
 						bargainInt = 0;
 
 					location = {lat: parseFloat(location[1]), lng:parseFloat(location[0])};
@@ -46,7 +44,6 @@ $(function(){
 				});
 			}
 		}).fail(function(xhr, status, error) {
-			console.log(xhr, status, error);
 			var respError = $.parseJSON(xhr.responseText);
 			$modalBody.html('<p>' + respError.message + '</p>');
 			$modal.modal('show');
@@ -58,8 +55,8 @@ var map, markers = [];
 
 function initMap(){
 	map = new google.maps.Map(document.getElementById('map'), {
-		zoom: 6,
-		center: {lat: 47.3775499, lng: 8.4666751},
+		zoom: 7,
+		center: {lat: 46.8095942, lng: 7.103087},
 		mapTypeId: 'hybrid',
 
 		//Custom controls position
@@ -85,8 +82,13 @@ function addMarker(location, advertisementId, bargainInt) {
 			position: location,
 			animation: google.maps.Animation.DROP,
 			map: map,
+			url: 'http://www.homegate.ch/buy/'+advertisementId,
 			advertisementId: advertisementId
 	});
+
+	google.maps.event.addListener(marker, 'click', function() {
+		window.open(marker.url,'_blank');
+    });
 
 	if (bargainInt == 0){
 		marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
