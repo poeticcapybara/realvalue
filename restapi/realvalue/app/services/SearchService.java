@@ -33,7 +33,7 @@ public class SearchService {
 		l.add(new AbstractMap.SimpleEntry<String,String>("cit",city));
 		if (toBuy) l.add(new AbstractMap.SimpleEntry<String,String>("cht","purchall"));
 		else l.add(new AbstractMap.SimpleEntry<String,String>("cht","rentall"));
-		//l.add(new AbstractMap.SimpleEntry<String,String>("nrs","1000"));
+		l.add(new AbstractMap.SimpleEntry<String,String>("nrs","1000"));
 		JsonNode node = apiFetcher.fetch("/rs/real-estates", l);
 		if (node==null) return null;
 		try {
