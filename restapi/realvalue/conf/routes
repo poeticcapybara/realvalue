@@ -4,7 +4,7 @@
 
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
+GET     /                           controllers.Assets.at(path="/public", file="html/index.html")
 
 GET		/pricePrediction			controllers.PricePredictionController.index(adURL: String ?= null)
 GET		/search						controllers.SearchController.index(city: String ?= null, toBuy: String ?= null)
