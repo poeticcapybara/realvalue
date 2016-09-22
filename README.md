@@ -1,5 +1,5 @@
 # realvalue
-Fair Price Calculator for real estate in Switzerland
+Fair Price Calculator for real estate in Switzerland developed during HackZurich 2016.
 
 ## Simple setup and usage
 1. Download Play with activator from playframework.com
