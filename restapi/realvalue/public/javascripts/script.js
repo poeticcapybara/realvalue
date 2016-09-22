@@ -10,29 +10,27 @@ $(function(){
 
 		deleteMarkers();
 
-		$.get('https://api.tamedia.cloud/homegate/v1/rs/real-estates?cht=purchall&nrs=10000&cit=' + city, {
-			apikey: 'aac2c78bdfd7487d998f7ae679b55c9b'
-		}).done(function(data) {
-
+		$.get('http://localhost:9000/search?city=' + city+'&toBuy=true')
+		.done(function(data) {
 			if(data.resultCount == 0){
 				$modalBody.html('<p>No data available, try another city.</p>');
 				$modal.modal('show');
 			}
 			else{
-				data.items.forEach(function(item, i){
+				data.list.forEach(function(item, i){
 					var location = item.geoLocation.split(","),
-						advertisementId = item.advertisementId,
+						advertisementId = item.advId,
 						bargainInt = 0;
 
 					location = {lat: parseFloat(location[1]), lng:parseFloat(location[0])};
 
-					if (item.price < 1000000 ){
+					if (item.fairPrice >= item.actualPrice ){
 						bargainInt = 1;
 					}
-					else if (item.price < 2500000 ){
+					else if (Math.abs(item.fairPrice-item.actualPrice)<50000){
 						bargainInt = 0;
 					}
-					else if (item.price >= 2500000 ){
+					else {
 						bargainInt = -1;
 					}
 
